@@ -6,7 +6,9 @@
     "start": "./node_modules/.bin/react-native-webpack-server start"
   },
   "dependencies": {
-    "react-native": "^0.10.1"
+    "react": "^0.14.0-beta3",
+    "react-native": "^0.10.1",
+    "react-relay": "^0.2.1"
   },
   "devDependencies": {
     "babel": "^5.8.23",
