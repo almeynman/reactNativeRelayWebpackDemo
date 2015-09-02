@@ -20,7 +20,12 @@ var config = {
 
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel?stage=0&blacklist=validation.react']},
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {stage: 0, plugins: ['./build/babelRelayPlugin']}
+      },
     ],
   },
 

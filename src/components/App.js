@@ -1,5 +1,5 @@
 import React from 'react-native';
-//import Relay from 'react-relay'
+import Relay from '../../relay/relay';
 
 const {
   AppRegistry,
@@ -8,27 +8,27 @@ const {
   View,
 } = React;
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Hello
+          {this.props.hello.world}
         </Text>
       </View>
     );
   }
 }
 
-//Relay.createContainer(App, {
-//  fragments: {
-//    hello: () => Relay.QL`
-//      fragment on Hello {
-//        world
-//      }
-//    `
-//  }
-//})
+export default Relay.createContainer(App, {
+  fragments: {
+    hello: () => Relay.QL`
+      fragment on Hello {
+        world
+      }
+    `
+  }
+})
 
 
 const styles = StyleSheet.create({

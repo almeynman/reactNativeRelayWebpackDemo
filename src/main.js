@@ -1,11 +1,27 @@
 require('react-native-browser-polyfill');
 import React from 'react-native';
 import Relay from '../relay/relay';
-import reactNativeRelayWebpackDemo from './components/App';
+import App from './components/App';
+import AppHomeRoute from './AppHomeRoute';
 
-React.createElement(Relay.RootContainer, {
+Relay.injectNetworkLayer(
+  new Relay.DefaultNetworkLayer('http://localhost:3000/graphql')
+);
+
+let Root = React.createElement(Relay.RootContainer, {
   Component: App,
-  route: new _AppHomeRoute2['default'](),
-})
+  route: new AppHomeRoute(),
+});
 
-React.AppRegistry.registerComponent('reactNativeRelayWebpackDemo', () => reactNativeRelayWebpackDemo);
+class RootApp extends React.Component {
+  render() {
+    return (
+      <Relay.RootContainer
+        Component={App}
+        route={new AppHomeRoute()}
+        />
+    );
+  }
+}
+
+React.AppRegistry.registerComponent('reactNativeRelayWebpackDemo', () => RootApp);
